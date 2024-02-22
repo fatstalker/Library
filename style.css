@@ -1,0 +1,122 @@
+.leftSide {
+    background-image: url(bookshelf.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 98vh;
+    flex-basis: 45%;
+    justify-content: space-around;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    background: rgba(0,0,0,0.4);
+}
+#logoText {
+    display: flex;
+    font-size: 100px;
+    color: rgb(231, 244, 216);
+    font-family: myFont; /*non va*/
+}
+@font-face {
+    font-family: myFont;
+    src: url(../../Downloads/Norse-Bold.woff);
+}
+#logo {
+    width: 100px;
+}
+
+.rightSide {
+    flex-basis: 55%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(243, 244, 245);
+}
+
+.formHeader {
+    margin-top: 150px;
+}
+
+
+body {
+    display: flex;
+}
+
+p {
+    font-family: sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    margin-left: 40px;
+}
+form {
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding-left: 40px;
+    margin-left: 5px;
+    margin-top: 20px;
+    padding-bottom: 40px;
+    background-color: #adcf8f;
+    box-shadow: 0px 9px 9px -4px rgb(161, 160, 160);
+}
+.formCols {
+        display: flex;
+}
+.rightFormCol {
+    margin-left: 60px;
+}
+.input {
+    display: flex;
+    flex-direction: column;
+}
+#submitButton {
+    margin-left: 40px;
+    margin-top: 40px;
+    width: fit-content;
+    font-size: large;
+    font-family: sans-serif;
+    color: white;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #384944;
+}
+
+:root {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+footer {
+    position: relative;
+    top: 180px;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+a {
+    color: white;
+}
+
+#firstName:invalid, #lastName:invalid,#phoneNumber:invalid, #email:invalid, #password:invalid, #confirmPassword:invalid {
+    border-color: rgb(245, 53, 53);
+}
+#firstName:valid, #lastName:valid,#phoneNumber:valid, #email:valid, #password:valid, #confirmPassword:valid {
+    border-color: rgb(80, 208, 99);
+}
+input:focus {
+    outline: 0;
+    border-color:rgb(151, 151, 239);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10%;
+    box-shadow: 2px 2px 2px rgb(151, 151, 239);
+}
+input:hover {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10%;
+    box-shadow: 2px 2px 2px rgb(215, 215, 243);
+}
