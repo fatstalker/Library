@@ -1,12 +1,18 @@
 .leftSide {
     background-image: url(bookshelf.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    height: 98vh;
-    flex-basis: 45%;
-    justify-content: space-around;
+    background-size: 50%;
+    background-repeat: repeat-x;
+    display: grid;
+    min-height: 50%;
+    flex-basis: 50%;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 30%);
+    row-gap: 20%;
+    column-gap: 3%;
+    padding-top:7%;
+    padding-left: 5%;
+    padding-right: 5%;
+    overflow: scroll;
 }
 
 .logo {
@@ -29,19 +35,21 @@
 }
 
 .rightSide {
-    flex-basis: 55%;
+    flex-basis: 40%;
     display: flex;
     flex-direction: column;
     background-color: rgb(243, 244, 245);
 }
 
 .formHeader {
-    margin-top: 150px;
+    margin-top: 15px;
 }
 
 
 body {
     display: flex;
+    flex-direction: column;
+    height: 99vh;
 }
 
 p {
@@ -63,6 +71,7 @@ form {
 }
 .formCols {
         display: flex;
+        justify-content: center;
 }
 .rightFormCol {
     margin-left: 60px;
@@ -85,8 +94,8 @@ form {
 }
 
 :root {
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 footer {
@@ -119,4 +128,22 @@ input:hover {
     border-width: 2px;
     border-radius: 10%;
     box-shadow: 2px 2px 2px rgb(215, 215, 243);
+}
+
+.bookCover {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-family: sans-serif;
+    color: rgb(0, 0, 0);
+    align-items: start;
+    justify-content: space-around;
+    padding-left: 20px;
+    background-color: #d3deda; 
+    border: solid black 1px;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
 }
