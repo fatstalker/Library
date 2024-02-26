@@ -1,10 +1,11 @@
 .leftSide {
     background-image: url(bookshelf.png);
     background-size: 50%;
-    background-repeat: repeat-x;
     display: grid;
     min-height: 50%;
-    flex-basis: 50%;
+    flex-basis: 80%;
+    overflow: scroll;
+
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(3, 30%);
     row-gap: 20%;
@@ -12,43 +13,19 @@
     padding-top:7%;
     padding-left: 5%;
     padding-right: 5%;
-    overflow: scroll;
 }
 
-.logo {
-    display: flex;
-    justify-content: center;
-    background: rgba(0,0,0,0.4);
-}
-#logoText {
-    display: flex;
-    font-size: 100px;
-    color: rgb(231, 244, 216);
-    font-family: myFont; /*non va*/
-}
-@font-face {
-    font-family: myFont;
-    src: url(../../Downloads/Norse-Bold.woff);
-}
-#logo {
-    width: 100px;
-}
-
-.rightSide {
-    flex-basis: 40%;
+.form {
+    flex-basis: 20%;
     display: flex;
     flex-direction: column;
     background-color: rgb(243, 244, 245);
-}
+    padding: 20px;
 
-.formHeader {
-    margin-top: 15px;
 }
-
 
 body {
     display: flex;
-    flex-direction: column;
     height: 99vh;
 }
 
@@ -59,37 +36,41 @@ p {
     margin-left: 40px;
 }
 form {
+    display: flex;
+    flex-direction: column;
     font-family: sans-serif;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
-    padding-left: 40px;
-    margin-left: 5px;
-    margin-top: 20px;
-    padding-bottom: 40px;
+    padding: 40px;
     background-color: #adcf8f;
     box-shadow: 0px 9px 9px -4px rgb(161, 160, 160);
+    height: 70vh;
+    justify-content: start;
 }
 .formCols {
-        display: flex;
-        justify-content: center;
-}
+        display: grid;
+        grid-template-rows: repeat(3, 1fr) 2fr;
+        justify-content: space-between;
+        height: 60%;
+        align-items: start;
+        
+    }
 .rightFormCol {
     margin-left: 60px;
 }
 .input {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    align-items: center;
+    gap: 2%;
+
 }
 #submitButton {
-    margin-left: 40px;
-    margin-top: 40px;
-    width: fit-content;
+    width: 100%;
     font-size: large;
     font-family: sans-serif;
     color: white;
     padding: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
+    margin-top: 30%;
     background-color: #384944;
 }
 
@@ -109,12 +90,6 @@ a {
     color: white;
 }
 
-#firstName:invalid, #lastName:invalid,#phoneNumber:invalid, #email:invalid, #password:invalid, #confirmPassword:invalid {
-    border-color: rgb(245, 53, 53);
-}
-#firstName:valid, #lastName:valid,#phoneNumber:valid, #email:valid, #password:valid, #confirmPassword:valid {
-    border-color: rgb(80, 208, 99);
-}
 input:focus {
     outline: 0;
     border-color:rgb(151, 151, 239);
@@ -135,15 +110,37 @@ input:hover {
     flex-direction: column;
     font-size: 16px;
     font-family: sans-serif;
-    color: rgb(0, 0, 0);
+    font-weight: 600;
+    color: rgb(255, 255, 255);
     align-items: start;
     justify-content: space-around;
     padding-left: 20px;
-    background-color: #d3deda; 
+    background-color: #9b5016; 
     border: solid black 1px;
+    border-left: solid rgb(71, 46, 15) 8px;
+
+    /* background-image: url(bok.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    background-position-x: -10px;
+    background-position-y: 0; */
+
 }
+
+.removeButton, .readStatus{
+    display: flex;
+    background-color: #e7b996;
+    border-radius: 20%;
+    font-size: 16px;
+}
+
 
 h2 {
     display: flex;
     justify-content: center;
+}
+
+.isReadDiv {
+    display: flex;
 }

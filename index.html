@@ -7,18 +7,34 @@
     </head>
     <body>
         <div class="leftSide">
-            <div class="bookCover"><div>Title: Mille Splendidi Soli</div><div>Author: Khaled Hosseini</div><div>Pages: </div><div>Read: <svg fill="#f43e3e" width="30px" height="20px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg" stroke="#f43e3e"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="65.28"> <path d="M213.333 960c0-167.36 56-321.707 149.44-446.4L1406.4 1557.227c-124.693 93.44-279.04 149.44-446.4 149.44-411.627 0-746.667-335.04-746.667-746.667m1493.334 0c0 167.36-56 321.707-149.44 446.4L513.6 362.773c124.693-93.44 279.04-149.44 446.4-149.44 411.627 0 746.667 335.04 746.667 746.667M960 0C429.76 0 0 429.76 0 960s429.76 960 960 960 960-429.76 960-960S1490.24 0 960 0" fill-rule="evenodd"></path> </g><g id="SVGRepo_iconCarrier"> <path d="M213.333 960c0-167.36 56-321.707 149.44-446.4L1406.4 1557.227c-124.693 93.44-279.04 149.44-446.4 149.44-411.627 0-746.667-335.04-746.667-746.667m1493.334 0c0 167.36-56 321.707-149.44 446.4L513.6 362.773c124.693-93.44 279.04-149.44 446.4-149.44 411.627 0 746.667 335.04 746.667 746.667M960 0C429.76 0 0 429.76 0 960s429.76 960 960 960 960-429.76 960-960S1490.24 0 960 0" fill-rule="evenodd"></path> </g></svg></div>
+            <div class="bookCover" id="khaled">
+                <div>Title: Mille Splendidi Soli</div>
+                <div>Author: Khaled Hosseini</div>
+                <div>Pages: 350</div>
+                <div>Read: 
+                    <div id="khaledSvgPlaceholder"><img src="no.svg"></div>
+                </div>
+                <button class="removeButton" id="removeKhaled">Remove book</button>
+                <button class="readStatus" id="switchKhaled">Change read status</button>
+            </div>
+            <div class="bookCover" id="ferrante">
+                <div>Title: L'amica Geniale</div>
+                <div>Author: Elena Ferrante</div>
+                <div>Pages: 300</div>
+                <div>Read: 
+                    <div id="ferranteSvgPlaceholder"><img id="yesSvg" src="yes.svg"></div>
+                    </div>
+                <button class="removeButton" id="removeFerrante">Remove book</button>
+                <button class="readStatus" id="switchFerrante">Change read status</button>
+            </div>
         </div>
-            <div class="bookCover"><div>Title: L'amica Geniale</div><div>Author: Elena Ferrante</div><div>Pages: 300</div><div>Read: <svg fill="#000000" width="20px" height="20px" viewBox="0 0 14 14" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="green" d="M13 4.1974q0 .3097-.21677.5265L7.17806 10.329l-1.0529 1.0529q-.21677.2168-.52645.2168-.30968 0-.52645-.2168L4.01935 10.329 1.21677 7.5264Q1 7.3097 1 7t.21677-.5265l1.05291-1.0529q.21677-.2167.52645-.2167.30968 0 .52645.2167l2.27613 2.2839 5.07871-5.0864q.21677-.2168.52645-.2168.30968 0 .52645.2168l1.05291 1.0529Q13 3.8877 13 4.1974z"></path></g></svg></div></div>
-        </div>
-        <div class="rightSide">
+        <div class="form">
             <div class="formHeader">
 
             </div>
             <form id="myForm" method="post">
                 <h2>Use this form to add some books</h2>
                 <div class="formCols">
-                    <div class="leftFormCol">
                         <div class="input">
                             <label for="title">Title</label>
                             <input type="text" id="title" minlength="2" maxlength="30" placeholder="Enter the title">
@@ -27,9 +43,6 @@
                             <label for="pages">Number of pages</label>
                             <input type="number" id="pages" placeholder="250">
                         </div>
-                        
-                    </div>
-                    <div class="rightFormCol">
                         <div class="input">
                             <label for="author">Author</label>
                             <input type="text" id="author" placeholder="Enter the author">
@@ -40,7 +53,6 @@
                                 <option value="true">Yes</option>
                                 <option value="false">No</option>
                         </div>
-                    </div>
                 </div>
             </form>
             <input type="submit" id="submitButton" form="myForm" value="Add Book">

@@ -1,5 +1,9 @@
 const myLibrary = [];
 
+let addBook = document.querySelector('#submitButton');  addBook.addEventListener('click', addBookToLibrary);
+let shelfs = document.querySelector('.leftSide');
+
+
 function Book(title, author, pages, isRead) {
     this.title = title;
     this.author = author;
@@ -10,72 +14,137 @@ function Book(title, author, pages, isRead) {
 
 function addBookToLibrary() {
     event.preventDefault();
-    let title = document.querySelector('#title').value;
-    let author = document.querySelector('#author').value;
-    let pages = document.querySelector('#pages').value;
-    let isRead = document.querySelector('#isRead').value;
-    myLibrary.push(new Book (title, author, pages, isRead))
+    pushFormDataToArray();
     populateShelfs(myLibrary[myLibrary.length - 1]);
-    removeBook();
     clearForm();
 }
 
-function removeBook() {
-
-}
-
-
-function populateShelfs(book) {
-    let bookDiv = document.createElement("div");
-    let bookTitle = document.createTextNode('Title: ' + book.title);
-    let titleDiv = document.createElement('div'); titleDiv.appendChild(bookTitle);
-    let bookAuthor = document.createTextNode('Author: ' + book.author);
-    let authorDiv = document.createElement('div'); authorDiv.appendChild(bookAuthor);
-    let bookPages = document.createTextNode('Pages: ' + book.pages);
-    let pagesDiv = document.createElement('div'); pagesDiv.appendChild(bookPages);
-    //manage 'true' and 'false' into => 'read' and 'not read'
-    let isBookRead = document.createTextNode(book.isRead);
-    if (isBookRead.textContent === 'true') {
-        isBookRead.textContent = 'Read'
-    }
-    else if (isBookRead.textContent === 'false') {
-        isBookRead.textContent = 'Not read yet'
+    function pushFormDataToArray() {
+        let title = document.querySelector('#title').value;
+        let author = document.querySelector('#author').value;
+        let pages = document.querySelector('#pages').value;
+        let isRead = document.querySelector('#isRead').value;
+        myLibrary.push(new Book (title, author, pages, isRead));
     };
-    //------------------------------------------------------
-    bookDiv.appendChild(titleDiv);bookDiv.appendChild(authorDiv);bookDiv.appendChild(pagesDiv);bookDiv.appendChild(isBookRead);
-    shelfs.appendChild(bookDiv);
-    let removeButton = document.createElement('button');removeButton.classList.add('removeButton');
-    let removeButtonText = document.createTextNode('Remove book');
-    removeButton.appendChild(removeButtonText);
-    bookDiv.appendChild(removeButton);
-    removeButton.addEventListener('click', () => bookDiv.remove())
-    bookDiv.classList.add('bookCover')
-    createReadSwitch(bookDiv, isBookRead);
-}
 
-function clearForm () {
-    document.querySelector('#title').value = '';
-    document.querySelector('#author').value = '';
-    document.querySelector('#pages').value = '0';
-    document.querySelector('#isRead').value = true;
-}
+    function populateShelfs(book) {
+        let bookDiv = document.createElement("div");    bookDiv.classList.add('bookCover');
+        let titleDiv = document.createElement('div');   let bookTitle = document.createTextNode('Title: ' + book.title);  titleDiv.appendChild(bookTitle);
+        let authorDiv = document.createElement('div');  let bookAuthor = document.createTextNode('Author: ' + book.author);  authorDiv.appendChild(bookAuthor);
+        let pagesDiv = document.createElement('div');   let bookPages = document.createTextNode('Pages: ' + book.pages);  pagesDiv.appendChild(bookPages);
+        let isReadDiv = document.createElement('div');  let bookIsRead = document.createTextNode('Read: '); isReadDiv.appendChild(bookIsRead);  isReadDiv.classList.add('isReadDiv');
+        bookDiv.appendChild(titleDiv);
+        bookDiv.appendChild(authorDiv);
+        bookDiv.appendChild(pagesDiv);
+        bookDiv.appendChild(isReadDiv);
+        let svgPlaceholder = document.createElement('div'); isReadDiv.appendChild(svgPlaceholder);
 
-function createReadSwitch(bookDiv, isBookRead) {
-    let readSwitch = document.createElement('button');
-    let readSwitchText = document.createTextNode('Change read status');
-    readSwitch.appendChild(readSwitchText);
-    readSwitch.addEventListener('click', () => {
-        if(isBookRead.textContent == 'Read') {
-            isBookRead.textContent = 'Not read yet'
-        }
-        else if (isBookRead.textContent == 'Not read yet') {
-            isBookRead.textContent = 'Read'
-        }
-    })
-    bookDiv.appendChild(readSwitch);
-}
+        determineSvg(book.isRead, svgPlaceholder);
+        shelfs.appendChild(bookDiv);
+        removeBook(bookDiv);
+        createReadSwitch(bookDiv, book.isRead, isReadDiv, svgPlaceholder);
+    };
+
+        function determineSvg(isReadValue, svgPlaceholder) {
+            let yesSvg = document.createElement('img'); yesSvg.src = 'yes.svg';
+            let noSvg = document.createElement('img'); noSvg.src = 'no.svg';
+            
+            if (isReadValue == 'true') {
+                svgPlaceholder.appendChild(yesSvg);
+                return isReadValue = 'true';
+            }
+            else if (isReadValue == 'false') {
+                svgPlaceholder.appendChild(noSvg)
+                return isReadValue = 'false';
+            };
+        };
+
+        function removeBook(bookDiv) {
+            let removeButton = document.createElement('button');
+            let removeButtonText = document.createTextNode('Remove book');removeButton.appendChild(removeButtonText);
+            removeButton.classList.add('removeButton');
+            bookDiv.appendChild(removeButton);
+            removeButton.addEventListener('click', () => bookDiv.remove())
+        };
+
+        function createReadSwitch(bookDiv, isReadValue, svgPlaceholder) {
+            let yesSvg = document.createElement('img'); yesSvg.src = 'yes.svg';
+            let noSvg = document.createElement('img'); noSvg.src = 'no.svg';
+            let readSwitch = document.createElement('button');readSwitch.classList.add('readStatus');
+            let readSwitchText = document.createTextNode('Change read status');readSwitch.appendChild(readSwitchText);
+            bookDiv.appendChild(readSwitch);
+            
+            readSwitch.addEventListener('click', () => {
+                if(isReadValue == 'true') {
+                    svgPlaceholder.removeChild(svgPlaceholder.firstElementChild);
+                    svgPlaceholder.appendChild(noSvg);
+                    return isReadValue = 'false';
+                }
+                else if (isReadValue == 'false') {
+                    svgPlaceholder.removeChild(svgPlaceholder.firstElementChild);
+                    svgPlaceholder.appendChild(yesSvg);
+                    return isReadValue = 'true';
+                }
+            })
+        };
+    function clearForm () {
+        document.querySelector('#title').value = '';
+        document.querySelector('#author').value = '';
+        document.querySelector('#pages').value = '0';
+        document.querySelector('#isRead').value = true;
+    };
 
 
-let addBook = document.querySelector('#submitButton');
-addBook.addEventListener('click', addBookToLibrary);
-let shelfs = document.querySelector('.leftSide');
+
+
+
+//target default books
+
+let khaledDiv = document.querySelector('#khaled');
+let ferranteDiv = document.querySelector('#ferrante');
+//--------------------
+
+//remove functions for default books
+let removeKhaled = document.querySelector('#removeKhaled');
+let removeFerrante = document.querySelector('#removeFerrante');
+removeKhaled.addEventListener('click', () => {khaledDiv.remove()});
+removeFerrante.addEventListener('click', () => {ferranteDiv.remove()});
+//-----------------------------
+
+//change read status for default books
+let switchKhaled = document.querySelector('#switchKhaled');
+let khaledReadStatus = false;
+let khaledSvgPlaceholder = document.querySelector('#khaledSvgPlaceholder');
+let switchFerrante = document.querySelector('#switchFerrante');
+let ferranteReadStatus = true;
+
+switchKhaled.addEventListener('click', () => {
+    let yesSvg = document.createElement('img'); yesSvg.src = 'yes.svg';
+    let noSvg = document.createElement('img'); noSvg.src = 'no.svg';
+    if(khaledReadStatus) {
+        khaledSvgPlaceholder.removeChild(khaledSvgPlaceholder.firstElementChild);
+        khaledSvgPlaceholder.appendChild(noSvg);
+        khaledReadStatus = false;
+    }
+    else {
+        khaledSvgPlaceholder.removeChild(khaledSvgPlaceholder.firstElementChild);
+        khaledSvgPlaceholder.appendChild(yesSvg);
+        khaledReadStatus = true;
+    }
+})
+
+switchFerrante.addEventListener('click', () => {
+    let yesSvg = document.createElement('img'); yesSvg.src = 'yes.svg';
+    let noSvg = document.createElement('img'); noSvg.src = 'no.svg';
+    if(ferranteReadStatus) {
+        ferranteSvgPlaceholder.removeChild(ferranteSvgPlaceholder.firstElementChild);
+        ferranteSvgPlaceholder.appendChild(noSvg);
+        ferranteReadStatus = false;
+    }
+    else {
+        ferranteSvgPlaceholder.removeChild(ferranteSvgPlaceholder.firstElementChild);
+        ferranteSvgPlaceholder.appendChild(yesSvg);
+        ferranteReadStatus = true;
+    }
+})
+//-----------------------------
