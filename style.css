@@ -6,11 +6,11 @@
     flex-basis: 80%;
     overflow: scroll;
 
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(3, 30%);
-    row-gap: 20%;
+    row-gap: 10%;
     column-gap: 3%;
-    padding-top:7%;
+    padding-top:3%;
     padding-left: 5%;
     padding-right: 5%;
 }
@@ -111,28 +111,34 @@ input:hover {
     font-size: 16px;
     font-family: sans-serif;
     font-weight: 600;
-    color: rgb(255, 255, 255);
+    color: rgb(219, 217, 217);
     align-items: start;
     justify-content: space-around;
     padding-left: 20px;
-    background-color: #9b5016; 
+    padding: 10px;
+    background-color: #721313; 
     border: solid black 1px;
-    border-left: solid rgb(71, 46, 15) 8px;
-
-    /* background-image: url(bok.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    position: relative;
-    background-position-x: -10px;
-    background-position-y: 0; */
+    border-left: solid rgb(55, 10, 10) 20px;
+    box-shadow: 5px 3px 2px rgb(33, 20, 4);
 
 }
-
+.title {
+    border: solid rgb(144, 127, 28) 1px;border-radius: 20px;padding: 8px; margin: 10px;
+}
+.read {
+    display: flex;
+    align-items: center;
+}
+.author, .pages {
+    text-decoration: underline black 1px;
+}
 .removeButton, .readStatus{
     display: flex;
-    background-color: #e7b996;
-    border-radius: 20%;
+    background-color: #bda694;
+    border-radius: 10px;
     font-size: 16px;
+    font-weight: 1000;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 
@@ -143,4 +149,22 @@ h2 {
 
 .isReadDiv {
     display: flex;
+}
+
+.red {
+    background-color: #721313; 
+    border-left: solid rgb(55, 10, 10) 20px;
+}
+
+.blue {
+    background-color: #272f67;
+    border-left: solid rgb(14, 10, 55) 20px;
+}
+.green {
+    background-color: #0c4513; 
+    border-left: solid rgb(7, 42, 9) 20px;  
+}
+.brown {
+    background-color: #4b230d; 
+    border-left: solid rgb(45, 25, 8) 20px;
 }

@@ -29,9 +29,9 @@ function addBookToLibrary() {
 
     function populateShelfs(book) {
         let bookDiv = document.createElement("div");    bookDiv.classList.add('bookCover');
-        let titleDiv = document.createElement('div');   let bookTitle = document.createTextNode('Title: ' + book.title);  titleDiv.appendChild(bookTitle);
-        let authorDiv = document.createElement('div');  let bookAuthor = document.createTextNode('Author: ' + book.author);  authorDiv.appendChild(bookAuthor);
-        let pagesDiv = document.createElement('div');   let bookPages = document.createTextNode('Pages: ' + book.pages);  pagesDiv.appendChild(bookPages);
+        let titleDiv = document.createElement('div');   let bookTitle = document.createTextNode(book.title);  titleDiv.appendChild(bookTitle); titleDiv.classList.add('title');
+        let authorDiv = document.createElement('div');  let bookAuthor = document.createTextNode('Author: ' + book.author);  authorDiv.appendChild(bookAuthor);authorDiv.classList.add('author');
+        let pagesDiv = document.createElement('div');   let bookPages = document.createTextNode('Pages: ' + book.pages);  pagesDiv.appendChild(bookPages);pagesDiv.classList.add('pages');
         let isReadDiv = document.createElement('div');  let bookIsRead = document.createTextNode('Read: '); isReadDiv.appendChild(bookIsRead);  isReadDiv.classList.add('isReadDiv');
         bookDiv.appendChild(titleDiv);
         bookDiv.appendChild(authorDiv);
@@ -43,6 +43,7 @@ function addBookToLibrary() {
         shelfs.appendChild(bookDiv);
         removeBook(bookDiv);
         createReadSwitch(bookDiv, book.isRead, isReadDiv, svgPlaceholder);
+        applyRandomColor(bookDiv, possibleSelections);
     };
 
         function determineSvg(isReadValue, svgPlaceholder) {
@@ -148,3 +149,11 @@ switchFerrante.addEventListener('click', () => {
     }
 })
 //-----------------------------
+
+//random color generator
+let possibleSelections = ["red", "blue", "green", "brown"];
+function applyRandomColor(bookDiv, possibleSelections) {
+    let randomColor = possibleSelections[Math.floor(Math.random() * possibleSelections.length)];
+    bookDiv.classList.add(randomColor);
+}
+//----------------------
