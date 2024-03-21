@@ -4,12 +4,14 @@ let addBook = document.querySelector('#submitButton');  addBook.addEventListener
 let shelfs = document.querySelector('.leftSide');
 
 
-function Book(title, author, pages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-}   //constructor
+class Book {
+    constructor (title, author, pages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+    }
+}
 
 
 function addBookToLibrary() {
@@ -24,7 +26,7 @@ function addBookToLibrary() {
         let author = document.querySelector('#author').value;
         let pages = document.querySelector('#pages').value;
         let isRead = document.querySelector('#isRead').value;
-        myLibrary.push(new Book (title, author, pages, isRead));
+        myLibrary.push(new Book (title, author, pages, isRead));//adjust
     };
 
     function populateShelfs(book) {
